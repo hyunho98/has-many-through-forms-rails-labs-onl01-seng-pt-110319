@@ -1,2 +1,10 @@
 <h1>Title: <%= @post.title %></h1>
 <h3>Categories: <%= @post.categories.each {|category| category.name + " "} %></h3>
+<p>Content: <%= @post.content %></p>
+<h3>Comments</h3>
+<%= @post.comments.each do |comment| %>
+  <p><%= comment.content %></p>
+<% end %>
+<%= @post.users.uniq.each do |user| %>
+  <p>user.name</p>
+<% end %>
