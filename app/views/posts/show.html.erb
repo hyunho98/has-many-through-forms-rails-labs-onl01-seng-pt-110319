@@ -6,5 +6,17 @@
   <p><%= comment.content %></p>
 <% end %>
 <%= @post.users.uniq.each do |user| %>
-  <%= link_to user.username, user_path(user) %>
+  <%= link_to user.username, user_path(user) %><br>
+<% end %>
+<br>
+<%= form_for @post.comments.build do |comment| %>
+  <%= comment.hidden_field :post_id, value: @post.id %>
+  <%= comment.text_area :content %>
+  <%= comment.collection_select :user_id, User.all, :id, :username %>
+  <br>
+  <%= fields_for :user, User.new do |user_fields| %>
+    <%= user_fields.label :username %><br>
+    <%= user_fields.text_field :username %><br>
+  <% end %>
+  <%= comment.submit %>
 <% end %>
