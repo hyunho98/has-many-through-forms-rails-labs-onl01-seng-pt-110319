@@ -6,5 +6,5 @@
   <p><%= comment.content %></p>
 <% end %>
 <%= @post.users.uniq.each do |user| %>
-  <%= link_to user.username, user_path(user)
+  <%= link_to user.username, user_path(user) %>
 <% end %>
