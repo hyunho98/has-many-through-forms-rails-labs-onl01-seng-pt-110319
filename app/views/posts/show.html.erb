@@ -14,7 +14,7 @@
   <%= comment.text_area :content %>
   <%= comment.collection_select :user_id, User.all, :id, :username %>
   <br>
-  <%= fields_for :user, User.new do |user| %>
+  <%= comment.fields_for :user, User.new do |user| %>
     <%= user.label :username %><br>
     <%= user.text_field :username %><br>
   <% end %>
